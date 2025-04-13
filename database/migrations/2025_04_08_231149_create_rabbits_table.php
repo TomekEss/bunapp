@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('mother_id')->nullable()->constrained('rabbits');
             $table->foreignId('father_id')->nullable()->constrained('rabbits');
             $table->tinyInteger('gender')->nullable();
+            $table->foreignId('breed')->nullable()->constrained('breeds');
             $table->timestamps();
         });
     }
