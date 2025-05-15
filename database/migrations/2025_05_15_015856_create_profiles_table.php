@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rabbits', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedTinyInteger('gender')->nullable();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('mother_id')->nullable()->constrained('rabbits');
-            $table->foreignId('father_id')->nullable()->constrained('rabbits');
-            $table->foreignId('breed_id')->nullable()->constrained('breeds');
+            $table->string('nick')->nullable();
+            $table->string('avatar')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rabbits');
+        Schema::dropIfExists('profiles');
     }
 };
