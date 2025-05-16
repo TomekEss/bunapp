@@ -2,6 +2,8 @@
 
 namespace App\Models\Rabbit;
 
+use App\Enums\Rabbit\RabbitGenderEnum;
+use App\Models\Breed;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,9 +18,13 @@ class Rabbit extends Model
         'mother_id',
         'father_id',
         'gender',
-        'breed',
+        'breed_id',
         'photo_path',
         'note',
+    ];
+
+    protected $casts = [
+      'gender' => RabbitGenderEnum::class,
     ];
 
     public function user(): BelongsTo
@@ -34,5 +40,10 @@ class Rabbit extends Model
     public function father(): BelongsTo
     {
         return $this->belongsTo(Rabbit::class, 'father_id');
+    }
+
+    public function breed(): BelongsTo
+    {
+        return $this->belongsTo(Breed::class, 'breed_id');
     }
 }

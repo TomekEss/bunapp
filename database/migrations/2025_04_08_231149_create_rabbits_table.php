@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('mother_id')->nullable()->constrained('rabbits');
             $table->foreignId('father_id')->nullable()->constrained('rabbits');
             $table->foreignId('breed_id')->nullable()->constrained('breeds');
+            $table->date('birthday')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
