@@ -2,18 +2,18 @@
 
 namespace App\Filament\UserManagement\Resources;
 
-use App\Filament\UserManagement\Resources\RabbitResource\Pages;
-use App\Models\Rabbit;
+use App\Filament\UserManagement\Resources\CageResource\Pages;
+use App\Models\Cage;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class RabbitResource extends Resource
+class CageResource extends Resource
 {
-    protected static ?string $model = Rabbit\Rabbit::class;
+    protected static ?string $model = Cage\Cage::class;
 
-    protected static ?string $navigationIcon = 'fas-paw';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -52,9 +52,9 @@ class RabbitResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRabbits::route('/'),
-            'create' => Pages\CreateRabbit::route('/create'),
-            'edit' => Pages\EditRabbit::route('/{record}/edit'),
+            'index' => Pages\ListCages::route('/'),
+            'create' => Pages\CreateCage::route('/create'),
+            'edit' => Pages\EditCage::route('/{record}/edit'),
         ];
     }
 }

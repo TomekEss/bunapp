@@ -9,6 +9,43 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property RabbitGenderEnum|null $gender
+ * @property int $user_id
+ * @property int|null $mother_id
+ * @property int|null $father_id
+ * @property int|null $breed_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $birthday
+ * @property-read Breed|null $breed
+ * @property-read Rabbit|null $father
+ * @property-read Rabbit|null $mother
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereBirthday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereBreedId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereFatherId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereMotherId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Rabbit withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Rabbit extends Model
 {
     use SoftDeletes;
@@ -20,6 +57,7 @@ class Rabbit extends Model
         'gender',
         'breed_id',
         'photo_path',
+        'birthday',
         'note',
     ];
 

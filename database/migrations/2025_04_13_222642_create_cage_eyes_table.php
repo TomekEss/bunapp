@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cage_eyes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cage')->constrained('cages');
+            $table->foreignId('cage_id')->constrained('cages');
             $table->tinyInteger('number');
             $table->timestamps();
         });
