@@ -3,9 +3,10 @@
 namespace App\Models\Cage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $name
@@ -18,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Cage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Cage whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Cage whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Cage\CageEye> $eyes
+ * @property-read int|null $eyes_count
  * @mixin \Eloquent
  */
 class Cage extends Model
@@ -26,5 +29,9 @@ class Cage extends Model
       'name'
     ];
 
+    public function eyes(): HasMany
+    {
+        return $this->hasMany(CageEye::class, 'cage_id', 'id');
+    }
 
 }

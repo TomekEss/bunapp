@@ -2,17 +2,20 @@
 
 namespace App\Filament\UserManagement\Resources;
 
-use App\Filament\UserManagement\Resources\CageResource\Pages;
-use App\Filament\UserManagement\Resources\CageResource\RelationManagers\EyesRelationManager;
-use App\Models\Cage;
+use App\Filament\UserManagement\Resources\CageEyeResource\Pages;
+use App\Filament\UserManagement\Resources\CageEyeResource\RelationManagers;
+use App\Models\Cage\CageEye;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CageResource extends Resource
+class CageEyeResource extends Resource
 {
-    protected static ?string $model = Cage\Cage::class;
+    protected static ?string $model = CageEye::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -46,16 +49,16 @@ class CageResource extends Resource
     public static function getRelations(): array
     {
         return [
-            EyesRelationManager::class,
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCages::route('/'),
-            'create' => Pages\CreateCage::route('/create'),
-            'edit' => Pages\EditCage::route('/{record}/edit'),
+            'index' => Pages\ListCageEyes::route('/'),
+            'create' => Pages\CreateCageEye::route('/create'),
+            'edit' => Pages\EditCageEye::route('/{record}/edit'),
         ];
     }
 }

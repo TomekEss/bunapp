@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cage_id')->constrained('cages');
             $table->tinyInteger('number');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

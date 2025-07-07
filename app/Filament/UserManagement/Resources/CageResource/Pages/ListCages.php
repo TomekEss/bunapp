@@ -3,10 +3,11 @@
 namespace App\Filament\UserManagement\Resources\CageResource\Pages;
 
 use App\Filament\UserManagement\Resources\CageResource;
-use App\Models\Cage\CageEye;
 use Filament\Actions;
-use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class ListCages extends ListRecords
 {
@@ -19,22 +20,16 @@ class ListCages extends ListRecords
         ];
     }
 
-    public function getTabs(): array
+    public function table(Table $table): Table
     {
-        $tabs = ['all' => Tab::make('All')->badge($this->getModel()::count())];
+        return $table->columns($this->getTableColumns())->actions([EditAction::make()]);
+    }
 
-        $cage_eyes = CageEye::all();
-        foreach ($cage_eyes as $cage_eye) {
-            $cage = $cage_eye->cage;
-            $slug = $cage_eye->number;
-
-            $tabs[$slug] = Tab::make($cage)
-                ->badge($cage_eye->cage)
-                ->modifyQueryUsing(function ($query) use ($cage_eye) {
-                    return $query->where('cage_id', $cage_eye->id);
-                });
-        }
-
-        return $tabs;
+    protected function getTableColumns(): array
+    {
+        return [
+            TextColumn::make('id'),
+            TextColumn::make('name'),
+        ];
     }
 }

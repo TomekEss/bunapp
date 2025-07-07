@@ -5,7 +5,7 @@ namespace App\Filament\UserManagement\Resources\RabbitResource\Pages;
 use App\Enums\Rabbit\RabbitGenderEnum;
 use App\Filament\UserManagement\Resources\RabbitResource;
 use App\Models\Breed;
-use Filament\Actions;
+use App\Models\Rabbit\Rabbit;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -25,15 +25,15 @@ class CreateRabbit extends CreateRecord
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label('Imię królika')
+                    ->label(__('Name'))
                     ->required(),
 
                 DatePicker::make('birthdate')
-                    ->label('Data urodzenia')
+                    ->label(__('Birthdate'))
                     ->nullable(),
 
                 Select::make('breed_id')
-                    ->label('Rasa')
+                    ->label('Breed')
                     ->options(function () {
                         $breed = Breed::user()->pluck('name', 'id')->toArray();
                         return $breed;
@@ -42,12 +42,29 @@ class CreateRabbit extends CreateRecord
                     ->nullable(),
 
                 Select::make('gender')
-                    ->label('Płeć')
+                    ->label(__('Gender'))
                     ->options(fn () => collect(RabbitGenderEnum::cases())
-                        ->mapWithKeys(fn($case) => [$case->value => $case->getLabel()])
+                        ->mapWithKeys(fn($case) => [$case->value => __($case->getLabel())])
                         ->toArray()
                     )
-                    ->nullable(),
+                    ->default(RabbitGenderEnum::Unknown->value)
+                    ->required(),
+
+                Select::make('mather')
+                    ->label(__('Mather'))
+                    ->options(function () {
+                        $female = Rabbit::allFemale()->pluck('name', 'id')->toArray();
+
+                        return $female;
+                    }),
+
+                Select::make('father')
+                    ->label(__('Father'))
+                    ->options(function () {
+                        $female = Rabbit::allMale()->pluck('name', 'id')->toArray();
+
+                        return $female;
+                    }),
             ]);
     }
 

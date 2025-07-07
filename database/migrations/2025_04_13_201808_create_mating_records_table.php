@@ -19,6 +19,7 @@ return new class extends Migration
             $table->tinyInteger('type');
             $table->string('note', 255)->nullable();
             $table->tinyInteger('number_of_knockdown');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

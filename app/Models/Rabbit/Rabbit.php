@@ -8,9 +8,11 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -83,5 +85,16 @@ class Rabbit extends Model
     public function breed(): BelongsTo
     {
         return $this->belongsTo(Breed::class, 'breed_id');
+    }
+    #[Scope]
+    protected function allFemale(Builder $query): void
+    {
+        $query->where('gender', '=', 2);
+    }
+
+    #[Scope]
+    protected function allMale(Builder $query): void
+    {
+        $query->where('gender', '=', 1);
     }
 }

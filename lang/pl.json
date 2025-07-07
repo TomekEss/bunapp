@@ -1,0 +1,10 @@
+{
+"Name": "Imię",
+    "Gender": "Płeć",
+    "Breed": "Rasa",
+    "Male": "Samiec",
+    "Female": "Samica",
+    "Unknown": "Nieznana",
+    "Mather": "Matka",
+    "Father": "Ojciec"
+}
