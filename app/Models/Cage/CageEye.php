@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property int $cage
@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CageEye whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CageEye whereNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CageEye whereUpdatedAt($value)
+ * @property int $cage_id
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CageEye whereCageId($value)
  * @mixin \Eloquent
  */
 class CageEye extends Model

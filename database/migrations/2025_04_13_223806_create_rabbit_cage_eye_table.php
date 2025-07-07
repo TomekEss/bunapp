@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('cage_eye_id')->constrained('cage_eyes');
             $table->date('date_of_residence')->nullable();
             $table->date('moving_out')->nullable();
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
