@@ -2,6 +2,9 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\UserManagement\Resources\CageEyeResource;
+use App\Filament\UserManagement\Resources\CageResource;
+use App\Filament\UserManagement\Resources\RabbitResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -54,4 +57,5 @@ class UserManagementPanelProvider extends PanelProvider
                 Authenticate::class,
             ]);
     }
+
 }

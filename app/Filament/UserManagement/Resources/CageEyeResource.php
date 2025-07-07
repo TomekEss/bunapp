@@ -3,21 +3,28 @@
 namespace App\Filament\UserManagement\Resources;
 
 use App\Filament\UserManagement\Resources\CageEyeResource\Pages;
-use App\Filament\UserManagement\Resources\CageEyeResource\RelationManagers;
 use App\Models\Cage\CageEye;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CageEyeResource extends Resource
 {
+    protected static ?int $navigationSort = 2;
     protected static ?string $model = CageEye::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'fas-chalkboard';
+
+    public static function getLabel(): string
+    {
+        return __('Eye');
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return __('Eyes');
+    }
 
     public static function form(Form $form): Form
     {
