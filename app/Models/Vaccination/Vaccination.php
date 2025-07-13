@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Vaccination;
 
 use App\Models\Rabbit\Rabbit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $rabbit_id
