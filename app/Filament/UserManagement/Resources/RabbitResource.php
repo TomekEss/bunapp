@@ -11,9 +11,19 @@ use Filament\Tables\Table;
 
 class RabbitResource extends Resource
 {
+    protected static ?int $navigationSort = 1;
     protected static ?string $model = Rabbit\Rabbit::class;
-
     protected static ?string $navigationIcon = 'fas-paw';
+
+    public static function getLabel(): string
+    {
+        return __('Rabbit');
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return __('Rabbits');
+    }
 
     public static function form(Form $form): Form
     {

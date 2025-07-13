@@ -29,11 +29,11 @@ class CreateRabbit extends CreateRecord
                     ->required(),
 
                 DatePicker::make('birthdate')
-                    ->label(__('Birthdate'))
+                    ->label(__('Birthday'))
                     ->nullable(),
 
                 Select::make('breed_id')
-                    ->label('Breed')
+                    ->label(__('Breed'))
                     ->options(function () {
                         $breed = Breed::user()->pluck('name', 'id')->toArray();
                         return $breed;
@@ -50,10 +50,10 @@ class CreateRabbit extends CreateRecord
                     ->default(RabbitGenderEnum::Unknown->value)
                     ->required(),
 
-                Select::make('mather')
-                    ->label(__('Mather'))
+                Select::make('mother')
+                    ->label(__('Mother'))
                     ->options(function () {
-                        $female = Rabbit::allFemale()->pluck('name', 'id')->toArray();
+                        $female = Rabbit::allFemale()->withoutCurrentModel($this->record->id)->pluck('name', 'id')->toArray();
 
                         return $female;
                     }),
@@ -61,7 +61,7 @@ class CreateRabbit extends CreateRecord
                 Select::make('father')
                     ->label(__('Father'))
                     ->options(function () {
-                        $female = Rabbit::allMale()->pluck('name', 'id')->toArray();
+                        $female = Rabbit::allMale()->withoutCurrentModel($this->record->id)->pluck('name', 'id')->toArray();
 
                         return $female;
                     }),

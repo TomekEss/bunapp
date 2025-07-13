@@ -5,6 +5,17 @@
     "Male": "Samiec",
     "Female": "Samica",
     "Unknown": "Nieznana",
-    "Mather": "Matka",
-    "Father": "Ojciec"
+    "Mother": "Matka",
+    "Father": "Ojciec",
+    "Birthday": "Data urodzenia",
+    "Weight": "Waga",
+    "Rabbit": "Królik",
+    "Rabbits": "Króliki",
+    "Eye": "Oczko",
+    "Eyes": "Oczka",
+    "Cage": "Klatka",
+    "Cages": "Klatki",
+
+    "General Information": "Podstawowe informacje",
+    "Additional information": "Dodatkowe informacje"
 }

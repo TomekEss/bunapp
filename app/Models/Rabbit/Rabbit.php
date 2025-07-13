@@ -97,4 +97,10 @@ class Rabbit extends Model
     {
         $query->where('gender', '=', 1);
     }
+
+    #[Scope]
+    protected function withoutCurrentModel(Builder $query, int $modelId): void
+    {
+        $query->where('id', '!=' ,$modelId);
+    }
 }
